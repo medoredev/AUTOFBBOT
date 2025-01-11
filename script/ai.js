@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 module.exports.config = {
-  name: "ai",
+  name: "chesca",
   version: 1.0,
   credits: "Jay Mar",
   description: "Interact to Ai",
@@ -39,7 +39,7 @@ module.exports.run = async function ({ api, event, args }) {
     const answer = response.data.response;
 
     await api.editMessage(
-      `🤖 𝗥𝗘𝗦𝗣𝗢𝗡𝗦𝗘\n${answer}`,
+      `🎀𝗥𝗘𝗦𝗣𝗢𝗡𝗦𝗘\n${answer}`,
       initialMessage.messageID
     );
   } catch (error) {
