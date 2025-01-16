@@ -23,7 +23,7 @@ module.exports.run = async function ({ api, event, args }) {
 			await api.sendMessage(
 				`𝙉𝙊𝙏𝙄𝘾𝙀 𝙁𝙍𝙊𝙈 𝘿𝙀𝙑𝙀𝙇𝙊𝙋𝙀𝙍 
  ---------------- 
- Developer Name : Alex Jhon M. Ponce
+ Developer Name : Bioscope-08
  --------------- 
  『𝗡𝗼𝘁𝗶𝗰𝗲』${custom}`,
 				thread.threadID
