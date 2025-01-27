@@ -25,7 +25,7 @@ module.exports.run = async function({
       let page = 1;
       let start = (page - 1) * pages;
       let end = start + pages;
-      let helpMessage = `Command List:\n\n`;
+      let helpMessage = `available Command List:\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `\t${i + 1}. 「 ${prefix}${commands[i]} 」\n`;
       }
@@ -40,7 +40,7 @@ module.exports.run = async function({
       const pages = 20;
       let start = (page - 1) * pages;
       let end = start + pages;
-      let helpMessage = `Command List:\n\n`;
+      let helpMessage = `event Command List:\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
         helpMessage += `\t${i + 1}. 「 ${prefix}${commands[i]} 」\n`;
       }

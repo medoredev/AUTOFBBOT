@@ -1,13 +1,13 @@
 const axios = require('axios');
 
 module.exports.config = {
-  name: "chesca",
+  name: "perplexity",
   version: 1.0,
-  credits: "Jay Mar",
-  description: "Interact to Ai",
+  credits: "Jay Mar",// Api by hazey.
+  description: "Interact with Perplexity AI",
   hasPrefix: false,
   usages: "{pn} [query]",
-  aliases: [],
+  aliases: ["px"],
   cooldown: 5,
 };
 
@@ -16,7 +16,7 @@ module.exports.run = async function ({ api, event, args }) {
     const query = args.join(" ");
     if (!query) {
       const messageInfo = await new Promise(resolve => {
-        api.sendMessage("Please provide a query.", event.threadID, (err, info) => {
+        api.sendMessage("Please provide a query!", event.threadID, (err, info) => {
           resolve(info);
         });
       });
@@ -28,20 +28,17 @@ module.exports.run = async function ({ api, event, args }) {
       return;
     }
 
-    const initialMessage = await new Promise(resolve => {
-      api.sendMessage("⏳ Thinking...", event.threadID, (err, info) => {
+    const rona = await new Promise(resolve => {
+      api.sendMessage("🕓 Searching...", event.threadID, (err, info) => {
         resolve(info);
       }, event.messageID);
     });
 
-    const apiUrl = `https://heru-apiv2.ddnsfree.com/api/gpt-4o-2024-08-06?query=${encodeURIComponent(query)}`;
+    const apiUrl = `http://sgp1.hmvhostings.com:25743/perplexity?q=${encodeURIComponent(query)}`;
     const response = await axios.get(apiUrl);
-    const answer = response.data.response;
+    const answer = response.data.perplexity?.[0]?.text || "No response found. Please try again later.";
 
-    await api.editMessage(
-      `🎀𝗥𝗘𝗦𝗣𝗢𝗡𝗦𝗘\n${answer}`,
-      initialMessage.messageID
-    );
+    await api.editMessage(`✨ 𝗣𝗘𝗥𝗣𝗟𝗘𝗫𝗜𝗧𝗬\n━━━━━━━━━━━━━━━━━━\n${answer}`, rona.messageID);
   } catch (error) {
     console.error("⚠️", error.message);
     await api.editMessage("An error occurred while processing your request. Please try again later.", event.messageID);
